@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédicas - Un Lugar de Amor, Fe y Familia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <button class="hamburger-menu">☰</button>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="predicas.html">Prédicas</a></li>
+            <li><a href="ministerios.html">Ministerios y Actividades</a></li>
+            <li><a href="reuniones.html">Reuniones</a></li>
+            <li><a href="alabanzas.html">Alabanzas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="nosotros.html">Sobre Nosotros / Nuestra Fe</a></li>
+            <li><a href="newsletter.html">Newsletter</a></li>
+        </ul>
+    </nav>
+    <div class="logo-container">
+        <img src="images\logo_final_uno.png" alt="¡Iglesia Cristo Vive!">
+    </div>
+    <h1>Un lugar de Amor, Fe y Familia.</h1>
+</header>
+<main>
+    <section>
+        <h2>Prédicas</h2>
+        <div id="contenedor-noticias">
+            </div>
+    </section>
+</main>
+<script>
+    // Función para obtener los datos de la hoja de cálculo de Google
+    async function cargarNoticias() {
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRyviXPMjEXIs6J1ZZDchh5kE5eWiKxcysDVtalNLTldrCDxD_ijb_4BISemVnnLdku1HjDIx44Jk5n/pub?gid=0&single=true&output=csv'; 
+        try {
+            const response = await fetch(url);
+            const data = await response.text();
+            const filas = data.split('\n').slice(1); // Ignoramos la primera fila (encabezados)
+
+            const contenedor = document.getElementById('contenedor-noticias');
+            contenedor.innerHTML = ''; // Limpiamos el contenedor antes de agregar el contenido
+
+            filas.forEach(fila => {
+                const columnas = fila.split(',');
+                const titulo = columnas[0];
+                const contenido = columnas[1];
+                const imagenURL = columnas[2];
+                const fecha = columnas[3];
+
+                if (titulo && contenido) { // Verificamos que al menos haya título y contenido
+                    const articulo = document.createElement('article');
+                    articulo.className = 'noticia';
+                    articulo.innerHTML = `
+                        <h3>${titulo}</h3>
+                        ${imagenURL ? `<img src="${imagenURL}" alt="${titulo}">` : ''}
+                        <p>${contenido}</p>
+                        <span class="fecha">${fecha}</span>
+                    `;
+                    contenedor.appendChild(articulo);
+                }
+            });
+        } catch (error) {
+            console.error('Error al cargar las noticias:', error);
+            const contenedor = document.getElementById('contenedor-noticias');
+            contenedor.innerHTML = '<p>Lo sentimos, no pudimos cargar las noticias. Inténtalo de nuevo más tarde.</p>';
+        }
+    }
+
+    // Llamamos a la función para que se ejecute cuando se carga la página
+    cargarNoticias();
+</script>
+    <footer>
+        <p>&copy; 2024 Un Lugar de Amor, Fe y Familia. Todos los derechos reservados.</p>
+    </footer>
+<script>
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+</script>
+</body>
+</html>

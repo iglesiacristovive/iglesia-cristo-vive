@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Lugar de Amor, Fe y Familia</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+<header>
+    <button class="hamburger-menu">☰</button>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="predicas.html">Prédicas</a></li>
+            <li><a href="ministerios.html">Ministerios y Actividades</a></li>
+            <li><a href="reuniones.html">Reuniones</a></li>
+            <li><a href="alabanzas.html">Alabanzas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="nosotros.html">Sobre Nosotros / Nuestra Fe</a></li>
+            <li><a href="newsletter.html">Newsletter</a></li>
+        </ul>
+    </nav>
+    <div class="logo-container">
+        <img src="images\logo_final_uno.png" alt="¡Iglesia Cristo Vive!">
+    </div>
+    <h1>Un lugar de Amor, Fe y Familia.</h1>
+</header>
+    <main>
+        <section id="bienvenida">
+            <h2>¡Bienvenido/a a nuestro hogar digital!</h2>
+            <p>Aquí, cada corazón encuentra un refugio y cada alma, una conexión. Te invitamos a ser parte de nuestra familia, donde la fe nos une y el amor nos guía. Explorá un espacio diseñado para inspirarte, nutrirte y acompañarte en tu caminar.</p>
+            <a href="reuniones.html" class="cta-button">Únete a nuestras reuniones.</a>
+        </section>
+
+        <section id="mini-secciones">
+            <div>
+                <h3>Prédicas</h3>
+                <p>Descubrí mensajes que inspiran y fortalecen tu espíritu. Sumergite en la palabra y encontrá guía para cada día.</p>
+                <a href="predicas.html">Ver Prédicas</a>
+            </div>
+            <div>
+                <h3>Ministerios y Actividades</h3>
+                <p>Conocé cómo servimos a nuestra comunidad. Desde la escuelita bíblica hasta el comedor, hay un lugar para que sumes tu corazón.</p>
+                <a href="ministerios.html">Conocer Ministerios</a>
+            </div>
+            <div>
+                <h3>Reuniones</h3>
+                <p>Encontrá tu espacio de conexión. Uníte a nuestros encuentros de jóvenes, damas, caballeros y escuelita bíblica para compartir y crecer juntos.</p>
+                <a href="reuniones.html">Ver Reuniones</a>
+            </div>
+        </section>
+
+<section id="testimonios">
+    <h2>Palabras que Inspiran</h2>
+    <div class="carousel-container">
+        <div class="testimonial-item">
+            <p>"Encontré paz y fortaleza en cada mensaje. ¡Esta comunidad es una verdadera bendición!"</p>
+            <span>— María G.</span>
+        </div>
+        <div class="testimonial-item">
+            <p>"Mis hijos aman la escuelita bíblica. ¡Aquí crecemos todos en fe y amor!"</p>
+            <span>— Familia Rodríguez</span>
+        </div>
+        <div class="testimonial-item">
+            <p>"El amor de Dios se siente en cada actividad de evangelización. Gracias por servir con tanta pasión."</p>
+            <span>— Juan P.</span>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Un Lugar de Amor, Fe y Familia. Todos los derechos reservados.</p>
+    </footer>
+<script>
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+</script>
+</body>
+</html>

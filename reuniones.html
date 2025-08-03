@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reuniones - Un Lugar de Amor, Fe y Familia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <button class="hamburger-menu">☰</button>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="predicas.html">Prédicas</a></li>
+            <li><a href="ministerios.html">Ministerios y Actividades</a></li>
+            <li><a href="reuniones.html">Reuniones</a></li>
+            <li><a href="alabanzas.html">Alabanzas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="nosotros.html">Sobre Nosotros / Nuestra Fe</a></li>
+            <li><a href="newsletter.html">Newsletter</a></li>
+        </ul>
+    </nav>
+    <div class="logo-container">
+        <img src="images\logo_final_uno.png" alt="¡Iglesia Cristo Vive!">
+    </div>
+    <h1>Un lugar de Amor, Fe y Familia.</h1>
+</header>
+    <main>
+        <section>
+            <h2>Reuniones</h2>
+            <p>Aquí encontrarás los mensajes y enseñanzas de nuestro ministerio. ¡Vuelve pronto para más contenido!</p>
+            </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Un Lugar de Amor, Fe y Familia. Todos los derechos reservados.</p>
+    </footer>
+<script>
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+</script>
+</body>
+</html>
