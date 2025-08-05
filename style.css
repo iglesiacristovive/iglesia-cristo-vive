@@ -19,121 +19,130 @@
 }
 
 /* Aplicar animaciones a elementos específicos */
-
-/* Header (aparece suavemente) */
 header {
-    animation: fadeIn 1s ease-out; /* Dura 1 segundo, con un suavizado al final */
+    animation: fadeIn 1s ease-out;
 }
 
-/* Sección de Bienvenida (aparece suavemente y se desliza hacia arriba) */
 #bienvenida {
-    animation: slideUp 1s ease-out 0.3s forwards; /* Dura 1s, empieza con 0.3s de retraso, se queda al final */
-    opacity: 0; /* Empieza oculto para que la animación se vea */
+    animation: slideUp 1s ease-out 0.3s forwards;
+    opacity: 0;
 }
 
-/* Mini-Secciones (aparecen suavemente, con un pequeño retraso entre ellas) */
-#mini-secciones div:nth-child(1) { /* Primera caja */
+#mini-secciones div:nth-child(1) {
     animation: fadeIn 0.8s ease-out 0.8s forwards;
     opacity: 0;
 }
-#mini-secciones div:nth-child(2) { /* Segunda caja */
-    animation: fadeIn 0.8s ease-out 1.1s forwards; /* Mayor retraso */
+#mini-secciones div:nth-child(2) {
+    animation: fadeIn 0.8s ease-out 1.1s forwards;
     opacity: 0;
 }
-#mini-secciones div:nth-child(3) { /* Tercera caja */
-    animation: fadeIn 0.8s ease-out 1.4s forwards; /* Mayor retraso aún */
+#mini-secciones div:nth-child(3) {
+    animation: fadeIn 0.8s ease-out 1.4s forwards;
     opacity: 0;
 }
 
-/* Botón de llamada a la acción (CTA) también animado */
 .cta-button {
     animation: slideUp 0.8s ease-out 0.6s forwards;
     opacity: 0;
 }
 
-/* Footer (aparece suavemente) */
 footer {
     animation: fadeIn 1s ease-out 1.7s forwards;
     opacity: 0;
 }
 
-/* Estilos Generales */
+.roboto-<uniquifier> {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+/* VARIABLES DE COLOR - PALETA DEL SITIO */
+:root {
+  --color-primario: #20B2AA; /* Un turquesa profesional */
+  --color-secundario: #4682B4; /* Un azul acero */
+  --color-fondo: #F0F8FF; /* Un blanco azulado para el fondo */
+  --color-texto: #333;
+  --color-texto-claro: #555;
+  --color-resaltado: #FFD700; /* Un amarillo dorado para resaltar */
+  --color-fondo-claro: #f9f9f9;
+}
+
 body {
-    font-family: Arial, sans-serif; /* Tipo de letra básico */
-    margin: 0;
-    padding: 0;
-    background-color: #F8F8F8; /* Blanco muy suave, casi gris perla claro */
-    color: #333; /* Color de texto principal */
-    line-height: 1.6;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: 'Roboto', sans-serif;
 }
 
 /* CABECERA (Header) */
 header {
-    background-color: #FFFFFF; /* Blanco puro */
-    color: #333;
+    background-color: #FFFFFF;
+    color: var(--color-texto);
     padding: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
-    position: sticky; /* Hace que la cabecera se "pegue" */
-    top: 0; /* Se pega en la parte superior */
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    width: 100%; /* Ocupa todo el ancho */
-    animation: fadeIn 1s ease-out; /* Mantenemos la animación de entrada */
-    transition: padding 0.3s ease; /* Para una transición suave si cambia el padding al hacer scroll */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    animation: fadeIn 1s ease-out;
+    transition: padding 0.3s ease;
 }
 
 header h1 {
-    margin-top: 5px; /* Reducimos el margen superior para acercarlo al logo */
-    color: #007BFF; /* Azul cielo para el título principal */
+    margin-top: 10px;
+    color: var(--color-secundario);
+}
+
+header a:hover {
+    background-color: var(--color-primario);
 }
 
 header nav ul {
     list-style: none;
     padding: 0;
     margin: 10px 0 0 0;
-    display: flex; /* Usamos flexbox para centrar y espaciar */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    flex-wrap: wrap; /* Para que bajen si hay muchos elementos en pantallas pequeñas */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 header nav ul li {
-    margin: 0 10px; /* Espacio entre los ítems del menú */
+    margin: 0 10px;
 }
 
 header nav ul li a {
     text-decoration: none;
-    color: #555; /* Gris oscuro para los enlaces del menú */
+    color: var(--color-texto-claro);
     font-weight: bold;
-    padding: 8px 15px; /* Relleno para que parezcan pastillas */
-    border-radius: 20px; /* Bordes redondeados */
-    transition: all 0.3s ease; /* Transición suave para todos los cambios */
-    display: inline-block; /* Necesario para que el padding y border-radius funcionen bien */
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
 header nav ul li a:hover {
-    background-color: #007BFF; /* Azul cielo de fondo al pasar el mouse */
-    color: #FFFFFF; /* Texto blanco al pasar el mouse */
-    transform: translateY(-2px); /* Eleva el enlace ligeramente */
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2); /* Sombra sutil al elevarse */
-}
-
-/* Estilos para el Logotipo */
-.logo-container {
-    /* margin-bottom: 10px;  Ya no es necesario */
+    background-color: var(--color-secundario);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
 }
 
 .logo-container img {
-    max-width: 180px; /* Tamaño máximo del logo, ajustalo si es muy grande o chico */
-    height: auto; /* Mantiene la proporción */
-    display: block; /* Para centrarlo */
-    margin: 0 auto; /* Centra la imagen */
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* SECCIÓN PRINCIPAL (Main) */
 main {
     padding: 20px;
-    max-width: 900px; /* Ancho máximo para el contenido */
-    margin: 20px auto; /* Centrar el contenido */
+    max-width: 900px;
+    margin: 20px auto;
     background-color: #FFFFFF;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     border-radius: 8px;
@@ -145,86 +154,72 @@ main {
 }
 
 #bienvenida h2 {
-    color: #007BFF; /* Azul cielo para el subtítulo de bienvenida */
+    color: var(--color-secundario);
     margin-bottom: 15px;
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #20B2AA; /* Turquesa para el botón CTA */
+    background-color: var(--color-primario);
     color: white;
     padding: 12px 25px;
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .cta-button:hover {
-    background-color: #1A938A; /* Turquesa un poco más oscuro al pasar el mouse */
-    box-shadow: 0 5px 15px rgba(32, 178, 170, 0.4); /* Sombra turquesa más marcada */
-    transform: translateY(-3px); /* Eleva el botón ligeramente */
-}
-/* Y asegurate de que tenga esta línea en .cta-button para que la animación sea suave */
-.cta-button {
-    /* ... (resto de tu código anterior) */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    background-color: #1A938A;
+    box-shadow: 0 5px 15px rgba(32, 178, 170, 0.4);
+    transform: translateY(-3px);
 }
 
 /* MINI-SECCIONES */
 #mini-secciones {
-    display: flex; /* Para que las cajas se pongan una al lado de la otra */
-    flex-wrap: wrap; /* Para que bajen si no hay espacio */
-    gap: 20px; /* Espacio entre las cajas */
-    justify-content: center; /* Centrar las cajas */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     margin-top: 40px;
 }
 
 #mini-secciones div {
-    background-color: #F0F0F0; /* Gris perla claro para el fondo de las cajas */
+    background-color: var(--color-fondo-claro);
     padding: 20px;
     border-radius: 8px;
-    flex: 1; /* Para que las cajas ocupen el mismo espacio */
-    min-width: 280px; /* Ancho mínimo para que no se achiquen demasiado */
+    flex: 1;
+    min-width: 280px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-#mini-secciones div {
-    /* ... (resto de tu código anterior) */
-    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Agregamos la transición aquí */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 #mini-secciones div:hover {
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Sombra más pronunciada al pasar el mouse */
-    transform: translateY(-5px); /* Eleva la caja ligeramente */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
 }
 
 #mini-secciones h3 {
-    color: #007BFF; /* Azul cielo para los títulos de las mini-secciones */
+    color: var(--color-secundario);
     margin-top: 0;
 }
 
 #mini-secciones a {
     display: inline-block;
-    background-color: #007BFF; /* Azul cielo para los enlaces de las mini-secciones */
+    background-color: var(--color-secundario);
     color: white;
     padding: 8px 15px;
     text-decoration: none;
     border-radius: 5px;
     margin-top: 15px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #mini-secciones a:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4); /* Sombra azul más marcada */
-}
-/* Y asegurate de que tenga esta línea en #mini-secciones a para que la animación sea suave */
-#mini-secciones a {
-    /* ... (resto de tu código anterior) */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
 }
 
 /* PIE DE PÁGINA (Footer) */
@@ -232,16 +227,13 @@ footer {
     text-align: center;
     padding: 20px;
     margin-top: 40px;
-    background-color: #E0E0E0; /* Gris perla medio para el footer */
+    background-color: #E0E0E0;
     color: #666;
     font-size: 0.9em;
 }
 
 /* Adaptaciones para celulares pequeños (Responsive Design) */
-@media (max-width: 600px) { /* Para celulares */
-    /* ... (tus estilos anteriores de celulares) ... */
-
-    /* Estilos para el menú de hamburguesa */
+@media (max-width: 600px) {
     header {
         display: flex;
         flex-direction: column;
@@ -249,26 +241,26 @@ footer {
     }
 
     .hamburger-menu {
-        display: block; /* Muestra el botón de hamburguesa en celulares */
+        display: block;
         background: none;
         border: none;
         font-size: 2em;
-        color: #555;
+        color: var(--color-texto-claro);
         cursor: pointer;
         padding: 10px;
-        position: absolute; /* Posiciona el botón en la esquina */
+        position: absolute;
         top: 10px;
         left: 10px;
-        z-index: 1001; /* Asegura que esté por encima de todo */
+        z-index: 1001;
     }
 
     .nav-menu {
-        display: none; /* Oculta el menú por defecto en celulares */
+        display: none;
         width: 100%;
     }
 
     .nav-menu.active {
-        display: block; /* Muestra el menú cuando tiene la clase 'active' */
+        display: block;
     }
 
     header nav ul {
@@ -290,7 +282,7 @@ footer {
     }
 
     header h1 {
-        margin-top: 10px; /* Ajusta el margen si el logo está encima del título */
+        margin-top: 10px;
     }
 }
 
@@ -299,24 +291,24 @@ footer {
     text-align: center;
     margin-top: 50px;
     padding: 30px 20px;
-    background-color: #F8F8F8; /* Un blanco suave para el fondo */
+    background-color: var(--color-fondo-claro);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    animation: fadeIn 1s ease-out 2s forwards; /* Animación de entrada */
+    animation: fadeIn 1s ease-out 2s forwards;
     opacity: 0;
 }
 
 #testimonios h2 {
-    color: #007BFF; /* Azul cielo */
+    color: var(--color-secundario);
     margin-bottom: 30px;
 }
 
 .carousel-container {
     position: relative;
-    max-width: 600px; /* Ancho máximo del carrusel */
+    max-width: 600px;
     margin: 0 auto;
-    overflow: hidden; /* Oculta lo que se sale del contenedor */
-    height: 120px; /* Altura fija para el carrusel, ajusta si los textos son más largos */
+    overflow: hidden;
+    height: 120px;
 }
 
 .testimonial-item {
@@ -329,91 +321,90 @@ footer {
     top: 0;
     left: 0;
     text-align: center;
-    opacity: 0; /* Empieza oculto */
-    animation: slideInTestimonial 12s infinite ease-in-out; /* Animación de rotación */
+    opacity: 0;
+    animation: slideInTestimonial 12s infinite ease-in-out;
 }
 
 .testimonial-item p {
     font-style: italic;
-    color: #555;
+    color: var(--color-texto-claro);
     margin-bottom: 10px;
 }
 
 .testimonial-item span {
     font-weight: bold;
-    color: #333;
-    display: block; /* Para que el nombre vaya en una línea nueva */
+    color: var(--color-texto);
+    display: block;
 }
 
 /* Definimos la animación para los testimonios */
 @keyframes slideInTestimonial {
-    0%, 100% { opacity: 0; transform: translateY(20px); } /* Empieza y termina oculto */
-    10%, 30% { opacity: 1; transform: translateY(0); } /* Se muestra */
-    33%, 63% { opacity: 0; transform: translateY(-20px); } /* Se oculta */
+    0%, 100% { opacity: 0; transform: translateY(20px); }
+    10%, 30% { opacity: 1; transform: translateY(0); }
+    33%, 63% { opacity: 0; transform: translateY(-20px); }
 }
 
-/* Para que cada testimonio aparezca en un momento diferente */
-.testimonial-item:nth-child(1) { animation-delay: 0s; } /* Empieza al inicio */
-.testimonial-item:nth-child(2) { animation-delay: 4s; } /* Empieza 4 segundos después */
-.testimonial-item:nth-child(3) { animation-delay: 8s; } /* Empieza 8 segundos después */
+.testimonial-item:nth-child(1) { animation-delay: 0s; }
+.testimonial-item:nth-child(2) { animation-delay: 4s; }
+.testimonial-item:nth-child(3) { animation-delay: 8s; }
 
 /* Adaptaciones para pantallas más pequeñas (Responsive Design) */
-@media (max-width: 768px) { /* Para tablets y celulares más grandes */
+@media (max-width: 768px) {
     main {
-        padding: 15px; /* Reducir el padding en pantallas medianas */
+        padding: 15px;
         margin: 15px auto;
     }
 
     #mini-secciones div {
-        flex: 1 1 45%; /* Dos columnas en pantallas medianas */
-        min-width: unset; /* Quitar min-width para que flex lo maneje */
-        max-width: 48%; /* Pequeño margen para evitar que se peguen */
+        flex: 1 1 45%;
+        min-width: unset;
+        max-width: 48%;
     }
 }
 
-@media (max-width: 600px) { /* Para celulares */
+@media (max-width: 600px) {
     header nav ul li {
-        display: block; /* En celulares, los ítems del menú van uno debajo del otro */
+        display: block;
         margin: 5px 0;
-        padding: 5px 10px; /* Ajuste de padding para los botones de menú en móvil */
+        padding: 5px 10px;
     }
 
     header nav ul li a {
-        padding: 10px 15px; /* Aumentar el padding de los enlaces para que sean más fáciles de tocar */
-        display: block; /* Asegura que el padding cubra todo el área del clic */
+        padding: 10px 15px;
+        display: block;
     }
 
     header h1 {
-        font-size: 1.8em; /* Reducir el tamaño del título principal en celulares */
+        font-size: 1.8em;
     }
 
     #bienvenida h2 {
-        font-size: 1.5em; /* Reducir el tamaño del subtítulo de bienvenida */
+        font-size: 1.5em;
     }
 
     #mini-secciones {
-        flex-direction: column; /* Las cajas se apilan en celulares */
+        flex-direction: column;
         align-items: center;
-        gap: 15px; /* Reducir el espacio entre las cajas en móvil */
+        gap: 15px;
     }
 
     #mini-secciones div {
-        min-width: 90%; /* Ocupan casi todo el ancho */
-        max-width: 90%; /* Asegurarse de que no se desborden */
+        min-width: 90%;
+        max-width: 90%;
     }
 
     .carousel-container {
-        height: auto; /* Dejar que la altura se ajuste al contenido en móvil */
-        min-height: 120px; /* Asegurar una altura mínima */
-        padding: 10px; /* Espacio interno para el carrusel */
+        height: auto;
+        min-height: 120px;
+        padding: 10px;
     }
 
     .testimonial-item {
-        padding: 15px; /* Reducir el padding de los testimonios */
+        padding: 15px;
     }
 }
 
-@media (max-width: 400px) { /* Para celulares muy pequeños */
+@media (max-width: 400px) {
     header h1 {
         font-size: 1.5em;
     }
@@ -433,7 +424,7 @@ footer {
 }
 
 .noticia h3 {
-    color: #007BFF;
+    color: var(--color-secundario);
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -446,7 +437,7 @@ footer {
 }
 
 .noticia p {
-    color: #555;
+    color: var(--color-texto-claro);
 }
 
 .noticia .fecha {
@@ -458,29 +449,29 @@ footer {
 
 /* ESTILOS PARA EL FORMULARIO DE MAILCHIMP */
 #mc-embedded-subscribe-form {
-    max-width: 300px; /* Ancho máximo para el formulario */
-    margin: 0 auto; /* Centrar el formulario */
+    max-width: 300px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9; /* Un fondo suave para el formulario */
+    background-color: var(--color-fondo-claro);
     border: 1px solid #ddd;
     border-radius: 8px;
 }
 
 #mc-embedded-subscribe-form .mc-field-group {
-    margin-bottom: 15px; /* Espacio entre los campos */
+    margin-bottom: 15px;
 }
 
 #mc-embedded-subscribe-form label {
     font-weight: bold;
-    color: #555;
+    color: var(--color-texto-claro);
 }
 
 #mc-embedded-subscribe-form input[type="email"] {
-    width: 100%; /* El campo de email ocupa todo el ancho */
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Es clave para que el padding no desborde el ancho */
+    box-sizing: border-box;
 }
 
 #mc-embedded-subscribe-form .clear {
@@ -488,7 +479,7 @@ footer {
 }
 
 #mc-embedded-subscribe-form .button {
-    background-color: #20B2AA; /* Color turquesa de tu sitio para el botón */
+    background-color: var(--color-primario);
     color: white;
     padding: 12px 25px;
     border: none;
@@ -499,7 +490,7 @@ footer {
 }
 
 #mc-embedded-subscribe-form .button:hover {
-    background-color: #1A938A; /* Turquesa más oscuro al pasar el mouse */
+    background-color: #1A938A;
 }
 
 /* ESTILOS PARA EL FORMULARIO DE CONTACTO */
@@ -507,7 +498,7 @@ footer {
     max-width: 300px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--color-fondo-claro);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
@@ -520,7 +511,7 @@ footer {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
-    color: #555;
+    color: var(--color-texto-claro);
 }
 
 #contact-form input[type="text"],
@@ -540,7 +531,7 @@ footer {
 }
 
 #contact-form button[type="submit"] {
-    background-color: #007BFF;
+    background-color: var(--color-secundario);
     color: white;
     padding: 12px 25px;
     border: none;
