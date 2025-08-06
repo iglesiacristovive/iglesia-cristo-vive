@@ -234,12 +234,23 @@ footer {
 
 /* Adaptaciones para celulares pequeños (Responsive Design) */
 @media (max-width: 600px) {
+    /* Contenedor principal de la cabecera en móvil */
     header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row; /* Vuelve a poner los elementos en fila */
+        justify-content: space-between; /* Espacia el logo y el botón */
+        align-items: center; /* Centra verticalmente los elementos */
+        padding: 10px 20px; /* Reduce el padding para más espacio */
     }
 
+    .logo-container {
+        margin: 0; /* Elimina el margen en móviles */
+    }
+
+    .logo-container img {
+        max-width: 120px; /* Tamaño del logo un poco más chico para móviles */
+    }
+
+    /* Estilos del menú de hamburguesa */
     .hamburger-menu {
         display: block;
         background: none;
@@ -247,16 +258,19 @@ footer {
         font-size: 2em;
         color: var(--color-texto-claro);
         cursor: pointer;
-        padding: 10px;
-        position: absolute;
-        top: 10px;
-        left: 10px;
+        padding: 5px;
+        /* Eliminamos la posición absoluta para que fluya con el contenido */
         z-index: 1001;
     }
 
     .nav-menu {
         display: none;
+        position: absolute; /* Ahora el menú se posiciona absolutamente */
+        top: 70px; /* Se posiciona debajo de la cabecera */
+        left: 0;
         width: 100%;
+        background-color: var(--color-fondo); /* Fondo del menú */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .nav-menu.active {
@@ -265,24 +279,23 @@ footer {
 
     header nav ul {
         flex-direction: column;
-        margin-top: 0;
-        background-color: #f8f8f8;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin: 0;
+        padding: 0;
     }
 
     header nav ul li {
-        margin: 0;
-        border-bottom: 1px solid #eee;
         width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    header nav ul li:last-child {
+        border-bottom: none; /* Eliminar el borde del último elemento */
     }
 
     header nav ul li a {
-        text-align: left;
         padding: 15px 20px;
-    }
-
-    header h1 {
-        margin-top: 10px;
+        display: block;
     }
 }
 
@@ -414,6 +427,21 @@ footer {
 }
 
 /* ESTILOS PARA LAS NOTICIAS */
+#noticias {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: var(--color-fondo-claro);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#noticias h2 {
+    color: var(--color-secundario);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 .noticia {
     background-color: #FFFFFF;
     border: 1px solid #E0E0E0;
@@ -427,13 +455,6 @@ footer {
     color: var(--color-secundario);
     margin-top: 0;
     margin-bottom: 10px;
-}
-
-.noticia img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 6px;
-    margin-bottom: 15px;
 }
 
 .noticia p {
