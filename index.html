@@ -88,7 +88,7 @@
 <script>
     // Función para cargar las noticias desde la API
     async function cargarNoticias() {
-        const url = 'https://f5trpkher8.execute-api.us-east-2.amazonaws.com/produccion/noticias';
+        const url = 'URL_DE_TU_API_GATEWAY/noticias';
         try {
             const response = await fetch(url);
             const noticias = await response.json();
@@ -96,18 +96,26 @@
             const contenedor = document.getElementById('contenedor-noticias');
             contenedor.innerHTML = ''; // Limpia el contenedor
 
-            noticias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha)); // Ordena las noticias por fecha
+            if (noticias.length > 0) {
+                noticias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha)); // Ordena las noticias por fecha
 
-            noticias.forEach(noticia => {
-                const noticiaHTML = `
-                    <div class="noticia">
-                        <h3>${noticia.titulo}</h3>
-                        <p>${noticia.contenido}</p>
-                        <span class="fecha">${new Date(noticia.fecha).toLocaleDateString()}</span>
-                    </div>
-                `;
-                contenedor.innerHTML += noticiaHTML;
-            });
+                noticias.forEach(noticia => {
+                    const imagenHTML = noticia.imagenUrl ? `<img src="${noticia.imagenUrl}" alt="${noticia.titulo}">` : '';
+                    const noticiaHTML = `
+                        <div class="noticia">
+                            ${imagenHTML}
+                            <div class="noticia-contenido">
+                                <h3>${noticia.titulo}</h3>
+                                <p>${noticia.contenido}</p>
+                                <span class="fecha">${new Date(noticia.fecha).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    `;
+                    contenedor.innerHTML += noticiaHTML;
+                });
+            } else {
+                contenedor.innerHTML = '<p>No hay noticias publicadas aún.</p>';
+            }
 
         } catch (error) {
             console.error('Error al cargar las noticias:', error);
