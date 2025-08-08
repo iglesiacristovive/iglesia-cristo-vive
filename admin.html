@@ -84,11 +84,12 @@
         </form>
         <div id="mensaje-estado"></div>
     </div>
+<p id="mensaje-estado"></p>
 <script>
     document.getElementById('noticia-form').addEventListener('submit', async function(event) {
         event.preventDefault();
 
-        const url = 'https://ygv6g4seid.execute-api.us-east-2.amazonaws.com/produccion/noticias'; // Reemplaza con tu URL de API Gateway
+        const url = 'URL_DE_TU_API_GATEWAY/noticias'; // Reemplaza con tu URL de API Gateway
 
         const titulo = document.getElementById('titulo').value;
         const contenido = document.getElementById('contenido').value;
