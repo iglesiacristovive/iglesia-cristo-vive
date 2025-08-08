@@ -86,6 +86,7 @@
     });
 </script>
 <script>
+<script>
     // Función para cargar las noticias desde la API
     async function cargarNoticias() {
         const url = 'https://ygv6g4seid.execute-api.us-east-2.amazonaws.com/produccion/noticias';
@@ -93,10 +94,12 @@
             const response = await fetch(url);
             const noticias = await response.json();
 
+            console.log("Datos recibidos de la API:", noticias); // <-- Esta línea es clave para depurar
+
             const contenedor = document.getElementById('contenedor-noticias');
             contenedor.innerHTML = ''; // Limpia el contenedor
 
-            if (noticias.length > 0) {
+            if (noticias && Array.isArray(noticias) && noticias.length > 0) {
                 noticias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha)); // Ordena las noticias por fecha
 
                 noticias.forEach(noticia => {
