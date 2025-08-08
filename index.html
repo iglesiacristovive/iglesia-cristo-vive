@@ -88,12 +88,19 @@
 <script>
     // Función para cargar las noticias desde la API
     async function cargarNoticias() {
-        const url = 'https://ygv6g4seid.execute-api.us-east-2.amazonaws.com/produccion/noticias';
-        try {
-            const response = await fetch(url);
-            const noticias = await response.json();
+        // Reemplaza esta URL con la tuya
+        const url = 'URL_DE_TU_API_GATEWAY/noticias'; 
 
-            console.log("Datos recibidos de la API:", noticias); // <-- Esta línea es clave para depurar
+        try {
+            // Hacemos la petición a la API
+            const response = await fetch(url);
+            // La respuesta de la API es un objeto JSON que contiene el "body"
+            const apiResponse = await response.json();
+
+            // Ahora, parseamos el "body" que es una cadena de texto JSON
+            const noticias = JSON.parse(apiResponse.body);
+
+            console.log("Datos de noticias:", noticias); // Para verificar en la consola
 
             const contenedor = document.getElementById('contenedor-noticias');
             contenedor.innerHTML = ''; // Limpia el contenedor
