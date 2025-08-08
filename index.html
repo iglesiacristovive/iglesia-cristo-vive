@@ -108,20 +108,26 @@
             if (noticias && Array.isArray(noticias) && noticias.length > 0) {
                 noticias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha)); // Ordena las noticias por fecha
 
-                noticias.forEach(noticia => {
-                    const imagenHTML = noticia.imagenUrl ? `<img src="${noticia.imagenUrl}" alt="${noticia.titulo}">` : '';
-                    const noticiaHTML = `
-                        <div class="noticia">
-                            ${imagenHTML}
-                            <div class="noticia-contenido">
-                                <h3>${noticia.titulo}</h3>
-                                <p>${noticia.contenido}</p>
-                                <span class="fecha">${new Date(noticia.fecha).toLocaleDateString()}</span>
-                            </div>
-                        </div>
-                    `;
-                    contenedor.innerHTML += noticiaHTML;
-                });
+// Código para construir el HTML de cada noticia
+noticias.forEach(noticia => {
+    // Usamos valores predeterminados por si no existen
+    const titulo = noticia.titulo || 'Sin título';
+    const contenido = noticia.contenido || 'Sin contenido';
+    const imagenUrl = noticia.imagenUrl || 'https://via.placeholder.com/200'; // Puedes usar una imagen de placeholder
+
+    const imagenHTML = imagenUrl ? `<img src="${imagenUrl}" alt="${titulo}">` : '';
+    const noticiaHTML = `
+        <div class="noticia">
+            ${imagenHTML}
+            <div class="noticia-contenido">
+                <h3>${titulo}</h3>
+                <p>${contenido}</p>
+                <span class="fecha">${new Date(noticia.fecha).toLocaleDateString()}</span>
+            </div>
+        </div>
+    `;
+    contenedor.innerHTML += noticiaHTML;
+});
             } else {
                 contenedor.innerHTML = '<p>No hay noticias publicadas aún.</p>';
             }
