@@ -96,33 +96,42 @@
 
     // Cargar noticias desde API
     async function cargarNoticias() {
-        const url = 'https://ceyoyrgxbd.execute-api.us-east-2.amazonaws.com/prod'; 
+        const url = 'https://ceyoyrgxbd.execute-api.us-east-2.amazonaws.com/prod/noticias';
         try {
             const response = await fetch(url);
             const apiResponse = await response.json();
-            let noticias = [];
-            if (apiResponse && typeof apiResponse.body === "string") {
-                noticias = JSON.parse(apiResponse.body);
+
+            // Soporta tanto array directo como body stringificado
+            let noticias;
+            if (Array.isArray(apiResponse)) {
+                noticias = apiResponse;
+            } else if (apiResponse && typeof apiResponse.body === "string") {
+                noticias = JSON.parse(apiResponse.body || "[]");
+            } else {
+                noticias = [];
             }
+
             const contenedor = document.getElementById('contenedor-noticias');
             contenedor.innerHTML = '';
-            if (Array.isArray(noticias) && noticias.length > 0) {
+
+            if (noticias.length > 0) {
                 noticias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
                 noticias.forEach(noticia => {
                     const titulo = noticia.titulo || 'Sin título';
                     const contenido = noticia.contenido || 'Sin contenido';
                     const imagenUrl = noticia.imagenUrl || 'https://via.placeholder.com/200';
-                    const noticiaHTML = `
+                    const fecha = noticia.fecha ? new Date(noticia.fecha).toLocaleDateString() : '';
+
+                    contenedor.innerHTML += `
                         <div class="noticia">
                             <img src="${imagenUrl}" alt="${titulo}">
                             <div class="noticia-contenido">
                                 <h3>${titulo}</h3>
                                 <p>${contenido}</p>
-                                <span class="fecha">${new Date(noticia.fecha).toLocaleDateString()}</span>
+                                <span class="fecha">${fecha}</span>
                             </div>
                         </div>
                     `;
-                    contenedor.innerHTML += noticiaHTML;
                 });
             } else {
                 contenedor.innerHTML = '<p>No hay noticias publicadas aún.</p>';
