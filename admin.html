@@ -3,121 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administración de Noticias</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Panel de Administración - Noticias</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
             background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
+            color: #333;
         }
         form {
-            display: flex;
-            flex-direction: column;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
         }
         label {
-            margin-bottom: 8px;
+            display: block;
+            margin-top: 10px;
             font-weight: bold;
         }
         input, textarea {
-            margin-bottom: 16px;
-            padding: 10px;
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
         button {
-            padding: 12px;
-            background-color: #007bff;
+            background-color: #28a745;
             color: white;
+            padding: 10px;
             border: none;
+            margin-top: 10px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
-        #mensaje-estado {
-            margin-top: 10px;
-            text-align: center;
-            font-weight: bold;
+        .news-list {
+            margin-top: 40px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .news-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .news-item:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Administración de Noticias</h1>
-        <form id="noticia-form">
-            <label for="titulo">Título de la Noticia:</label>
-            <input type="text" id="titulo" name="titulo" required>
+    <h1>Panel de Administración</h1>
 
-            <label for="contenido">Contenido:</label>
-            <textarea id="contenido" name="contenido" rows="10" required></textarea>
+    <form id="newsForm">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" required>
 
-            <label for="imagen-url">URL de la Imagen (opcional):</label>
-            <input type="text" id="imagen-url" name="imagen-url">
+        <label for="contenido">Contenido</label>
+        <textarea id="contenido" name="contenido" rows="4" required></textarea>
 
-            <button type="submit">Publicar Noticia</button>
-        </form>
-        <p id="mensaje-estado"></p>
+        <button type="submit">Publicar Noticia</button>
+    </form>
+
+    <div class="news-list" id="newsList">
+        <h2>Noticias Publicadas</h2>
+        <div id="newsItems"></div>
     </div>
 
     <script>
-        document.getElementById('noticia-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
+        const API_URL = "https://ceyoyrgxbd.execute-api.us-east-2.amazonaws.com";
 
-            // Asegúrate de reemplazar esta URL con la de tu API Gateway
-            const url = 'https://ygv6g4seid.execute-api.us-east-2.amazonaws.com/produccion/noticias'; 
+        // Cargar noticias al inicio
+        async function loadNews() {
+            const res = await fetch(`${API_URL}/noticias`);
+            const data = await res.json();
+            const newsContainer = document.getElementById("newsItems");
+            newsContainer.innerHTML = "";
+            data.forEach(noticia => {
+                const div = document.createElement("div");
+                div.className = "news-item";
+                div.innerHTML = `<h3>${noticia.titulo}</h3><p>${noticia.contenido}</p>`;
+                newsContainer.appendChild(div);
+            });
+        }
 
-            const titulo = document.getElementById('titulo').value;
-            const contenido = document.getElementById('contenido').value;
-            const imagenUrl = document.getElementById('imagen-url').value;
-            const mensajeDiv = document.getElementById('mensaje-estado');
+        // Enviar noticia nueva
+        document.getElementById("newsForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const titulo = document.getElementById("titulo").value;
+            const contenido = document.getElementById("contenido").value;
 
-            if (!titulo || !contenido) {
-                mensajeDiv.textContent = 'El título y el contenido son obligatorios.';
-                mensajeDiv.style.color = 'red';
-                return;
-            }
+            const res = await fetch(`${API_URL}/noticias`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ titulo, contenido })
+            });
 
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ titulo, contenido, imagenUrl })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    mensajeDiv.textContent = 'Noticia publicada con éxito.';
-                    mensajeDiv.style.color = 'green';
-                    document.getElementById('noticia-form').reset();
-                } else {
-                    mensajeDiv.textContent = `Error: ${data.message || response.statusText}`;
-                    mensajeDiv.style.color = 'red';
-                }
-            } catch (error) {
-                mensajeDiv.textContent = 'Hubo un error al publicar la noticia.';
-                mensajeDiv.style.color = 'red';
-                console.error('Error:', error);
+            if (res.ok) {
+                alert("Noticia publicada correctamente");
+                document.getElementById("newsForm").reset();
+                loadNews();
+            } else {
+                alert("Error publicando noticia");
             }
         });
+
+        loadNews();
     </script>
+
 </body>
 </html>

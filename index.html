@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iglesia Cristo Vive - Un Lugar de Amor, Fe y Familia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body>
 <header>
     <button class="hamburger-menu">☰</button>
@@ -29,118 +29,135 @@
     </div>
     <h1>Un lugar de Amor, Fe y Familia.</h1>
 </header>
-    <main>
-        <section id="bienvenida">
-            <h2>¡Bienvenido/a a nuestro hogar digital!</h2>
-            <p>Aquí, cada corazón encuentra un refugio y cada alma, una conexión. Te invitamos a ser parte de nuestra familia, donde la fe nos une y el amor nos guía. Explorá un espacio diseñado para inspirarte, nutrirte y acompañarte en tu caminar.</p>
-        </section>
-<section id="noticias">
-    <h2>Últimas Noticias</h2>
-    <div id="contenedor-noticias">
+
+<main>
+    <section id="bienvenida">
+        <h2>¡Bienvenido/a a nuestro hogar digital!</h2>
+        <p>Aquí, cada corazón encuentra un refugio y cada alma, una conexión. Te invitamos a ser parte de nuestra familia, donde la fe nos une y el amor nos guía. Explorá un espacio diseñado para inspirarte, nutrirte y acompañarte en tu caminar.</p>
+    </section>
+
+    <section id="noticias">
+        <h2>Últimas Noticias</h2>
+        <div id="contenedor-noticias"></div>
+    </section>
+
+    <section id="mini-secciones">
+        <div>
+            <h3>Prédicas</h3>
+            <p>Encuentra aquí la Palabra de Dios que alimenta tu espíritu y te guía en el camino.</p>
+            <a href="predicas.html">Ver Prédicas</a>
         </div>
-</section>
-        <section id="mini-secciones">
-            <div>
-                <h3>Prédicas</h3>
-                <p>Encuentra aquí la Palabra de Dios que alimenta tu espíritu y te guía en el camino.</p>
-                <a href="predicas.html">Ver Prédicas</a>
+        <div>
+            <h3>Ministerios y Actividades</h3>
+            <p>Conocé cómo servimos a nuestra comunidad. Desde la escuelita bíblica hasta el comedor, hay un lugar para que sumes tu corazón.</p>
+            <a href="ministerios.html">Conocer Ministerios</a>
+        </div>
+        <div>
+            <h3>Reuniones</h3>
+            <p>Encontrá tu espacio de conexión. Uníte a nuestros encuentros de jóvenes, damas, caballeros y escuelita bíblica para compartir y crecer juntos.</p>
+            <a href="reuniones.html">Ver Reuniones</a>
+        </div>
+    </section>
+
+    <section id="testimonios">
+        <h2>Palabras que Inspiran</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="testimonial-item">
+                    <p>"Encontré paz y fortaleza en cada mensaje. ¡Esta comunidad es una verdadera bendición!"</p>
+                    <span>— María G.</span>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Mis hijos aman la escuelita bíblica. ¡Aquí crecemos todos en fe y amor!"</p>
+                    <span>— Familia Rodríguez</span>
+                </div>
+                <div class="testimonial-item">
+                    <p>"El amor de Dios se siente en cada actividad de evangelización. Gracias por servir con tanta pasión."</p>
+                    <span>— Juan P.</span>
+                </div>
             </div>
-            <div>
-                <h3>Ministerios y Actividades</h3>
-                <p>Conocé cómo servimos a nuestra comunidad. Desde la escuelita bíblica hasta el comedor, hay un lugar para que sumes tu corazón.</p>
-                <a href="ministerios.html">Conocer Ministerios</a>
-            </div>
-            <div>
-                <h3>Reuniones</h3>
-                <p>Encontrá tu espacio de conexión. Uníte a nuestros encuentros de jóvenes, damas, caballeros y escuelita bíblica para compartir y crecer juntos.</p>
-                <a href="reuniones.html">Ver Reuniones</a>
-            </div>
-        </section>
-<section id="testimonios">
-    <h2>Palabras que Inspiran</h2>
-    <div class="carousel-container">
-        <div class="testimonial-item">
-            <p>"Encontré paz y fortaleza en cada mensaje. ¡Esta comunidad es una verdadera bendición!"</p>
-            <span>— María G.</span>
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
         </div>
-        <div class="testimonial-item">
-            <p>"Mis hijos aman la escuelita bíblica. ¡Aquí crecemos todos en fe y amor!"</p>
-            <span>— Familia Rodríguez</span>
-        </div>
-        <div class="testimonial-item">
-            <p>"El amor de Dios se siente en cada actividad de evangelización. Gracias por servir con tanta pasión."</p>
-            <span>— Juan P.</span>
-        </div>
-    </div>
-</section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Un Lugar de Amor, Fe y Familia. Todos los derechos reservados.</p>
-    </footer>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Un Lugar de Amor, Fe y Familia. Todos los derechos reservados.</p>
+</footer>
+
 <script>
+    // Menú responsive
     const hamburger = document.querySelector('.hamburger-menu');
     const navMenu = document.querySelector('.nav-menu');
-
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
     });
-</script>
-<script>
-    // Función para cargar las noticias desde la API
+
+    // Cargar noticias desde API
     async function cargarNoticias() {
-        // Reemplaza esta URL con la tuya
         const url = 'https://ygv6g4seid.execute-api.us-east-2.amazonaws.com/produccion/noticias'; 
-
         try {
-            // Hacemos la petición a la API
             const response = await fetch(url);
-            // La respuesta de la API es un objeto JSON que contiene el "body"
             const apiResponse = await response.json();
-
-            // Ahora, parseamos el "body" que es una cadena de texto JSON
-            const noticias = JSON.parse(apiResponse.body);
-
-            console.log("Datos de noticias:", noticias); // Para verificar en la consola
-
+            let noticias = [];
+            if (apiResponse && typeof apiResponse.body === "string") {
+                noticias = JSON.parse(apiResponse.body);
+            }
             const contenedor = document.getElementById('contenedor-noticias');
-            contenedor.innerHTML = ''; // Limpia el contenedor
-
-            if (noticias && Array.isArray(noticias) && noticias.length > 0) {
-                noticias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha)); // Ordena las noticias por fecha
-
-// Código para construir el HTML de cada noticia
-noticias.forEach(noticia => {
-    // Usamos valores predeterminados por si no existen
-    const titulo = noticia.titulo || 'Sin título';
-    const contenido = noticia.contenido || 'Sin contenido';
-    const imagenUrl = noticia.imagenUrl || 'https://via.placeholder.com/200'; // Puedes usar una imagen de placeholder
-
-    const imagenHTML = imagenUrl ? `<img src="${imagenUrl}" alt="${titulo}">` : '';
-    const noticiaHTML = `
-        <div class="noticia">
-            ${imagenHTML}
-            <div class="noticia-contenido">
-                <h3>${titulo}</h3>
-                <p>${contenido}</p>
-                <span class="fecha">${new Date(noticia.fecha).toLocaleDateString()}</span>
-            </div>
-        </div>
-    `;
-    contenedor.innerHTML += noticiaHTML;
-});
+            contenedor.innerHTML = '';
+            if (Array.isArray(noticias) && noticias.length > 0) {
+                noticias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+                noticias.forEach(noticia => {
+                    const titulo = noticia.titulo || 'Sin título';
+                    const contenido = noticia.contenido || 'Sin contenido';
+                    const imagenUrl = noticia.imagenUrl || 'https://via.placeholder.com/200';
+                    const noticiaHTML = `
+                        <div class="noticia">
+                            <img src="${imagenUrl}" alt="${titulo}">
+                            <div class="noticia-contenido">
+                                <h3>${titulo}</h3>
+                                <p>${contenido}</p>
+                                <span class="fecha">${new Date(noticia.fecha).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    `;
+                    contenedor.innerHTML += noticiaHTML;
+                });
             } else {
                 contenedor.innerHTML = '<p>No hay noticias publicadas aún.</p>';
             }
-
         } catch (error) {
-            console.error('Error al cargar las noticias:', error);
-            const contenedor = document.getElementById('contenedor-noticias');
-            contenedor.innerHTML = '<p>No se pudieron cargar las noticias. Por favor, inténtalo de nuevo más tarde.</p>';
+            console.error('Error al cargar noticias:', error);
+            document.getElementById('contenedor-noticias').innerHTML =
+                '<p>No se pudieron cargar las noticias. Intenta más tarde.</p>';
         }
     }
-
-    // Llama a la función al cargar la página
     cargarNoticias();
+
+    // Carrusel testimonios
+    document.addEventListener("DOMContentLoaded", function () {
+        const track = document.querySelector(".carousel-track");
+        const items = document.querySelectorAll(".testimonial-item");
+        const prevBtn = document.querySelector(".carousel-btn.prev");
+        const nextBtn = document.querySelector(".carousel-btn.next");
+        let index = 0;
+        const totalItems = items.length;
+        function updateCarousel() {
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+        function showNext() {
+            index = (index + 1) % totalItems;
+            updateCarousel();
+        }
+        function showPrev() {
+            index = (index - 1 + totalItems) % totalItems;
+            updateCarousel();
+        }
+        nextBtn.addEventListener("click", showNext);
+        prevBtn.addEventListener("click", showPrev);
+        setInterval(showNext, 5000);
+    });
 </script>
 </body>
 </html>
